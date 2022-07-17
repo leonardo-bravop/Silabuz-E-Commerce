@@ -4,7 +4,10 @@ const Spinner = () => {
   return (
     <Box
       sx={{
+        display: 'flex',
+        flexGrow: 1,
         textAlign: "center",
+        justifyContent: 'center',
         height: "100%",
       }}
     >
