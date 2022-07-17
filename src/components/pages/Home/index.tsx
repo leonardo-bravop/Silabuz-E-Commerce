@@ -19,6 +19,7 @@ const Home = () => {
         // component="img"
         // alt="The house from the offer."
         sx={{
+          my: '80px',
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -30,6 +31,8 @@ const Home = () => {
           height: { xs: "500px", md: "600px" },
           zIndex: -1,
           objectFit: "cover",
+          px: 6,
+          textAlign: 'center'
         }}
       >
         <Typography variant="h3" sx={{ fontWeight: 600 }}>
