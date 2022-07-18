@@ -1,10 +1,9 @@
 import React from "react";
-import { IconButton, Typography } from "@mui/material";
+import { IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-
-const pages = ["Trending", "Top Rated", "Upcoming"];
+import LoginModal from "./LoginModal";
 
 const MobileMenu = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -28,7 +27,7 @@ const MobileMenu = () => {
         aria-haspopup="true"
         onClick={handleOpenNavMenu}
         color="inherit"
-        sx={{border: '1px solid rgba(220,220,220,1)'}}
+        sx={{ border: "1px solid rgba(220,220,220,1)" }}
       >
         <MenuIcon />
       </IconButton>
@@ -50,11 +49,9 @@ const MobileMenu = () => {
           display: { xs: "block", md: "none" },
         }}
       >
-        {pages.map((page) => (
-          <MenuItem key={page} onClick={handleCloseNavMenu}>
-            <Typography textAlign="center">{page}</Typography>
-          </MenuItem>
-        ))}
+        <MenuItem onClick={handleCloseNavMenu}>
+          <LoginModal />
+        </MenuItem>
       </Menu>
     </>
   );

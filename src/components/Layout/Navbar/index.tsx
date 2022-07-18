@@ -14,6 +14,7 @@ import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 import MobileMenu from "./MobileMenu";
 import LoginModal from "./LoginModal";
+import { Link } from "react-router-dom";
 
 const Navbar: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -49,12 +50,18 @@ const Navbar: React.FC = () => {
           justifyContent="space-between"
           padding="15px 0"
         >
-          <Typography
-            variant="h4"
-            sx={{ display: { xs: "none", md: "flex" }, fontWeight: 600 }}
-          >
-            Bazar
-          </Typography>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <Typography
+              variant="h4"
+              sx={{
+                display: { xs: "none", md: "flex" },
+                fontWeight: 600,
+                color: "secondary.dark",
+              }}
+            >
+              Bazar
+            </Typography>
+          </Link>
           <FormControl
             sx={{
               display: "flex",
@@ -82,9 +89,9 @@ const Navbar: React.FC = () => {
             <InputBase
               sx={{
                 paddingLeft: "20px",
-                ":first-child": {
-                  padding: "0 !important",
-                },
+                // ":first-child": {
+                //   padding: "0 !important",
+                // },
                 flexGrow: 1,
               }}
             />
@@ -116,7 +123,7 @@ const Navbar: React.FC = () => {
             spacing={3}
             sx={{ display: { xs: "none", md: "flex" } }}
           >
-           <LoginModal/>
+            <LoginModal />
             <IconButton
               sx={{ backgroundColor: "rgba(0, 0, 0, 0.04)" }}
               onClick={toggleDrawer(true)}
@@ -124,8 +131,7 @@ const Navbar: React.FC = () => {
               <ShoppingBagOutlinedIcon />
             </IconButton>
             <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
-              <Box width={'400px'}>
-                </Box>
+              <Box width={"400px"}></Box>
             </Drawer>
           </Stack>
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
