@@ -1,37 +1,29 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   Box,
   Button,
-  Drawer,
   FormControl,
-  IconButton,
   InputBase,
   Stack,
   Typography,
 } from "@mui/material";
 import { Container } from "@mui/material";
-import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 import MobileMenu from "./MobileMenu";
 import LoginModal from "./LoginModal";
 import { Link } from "react-router-dom";
+import { useShoppingCartContext } from "contexts/ShoppingCartContext";
+import ShoppingCart from "components/ShoppingCart";
 
 const Navbar: React.FC = () => {
-  const [open, setOpen] = useState<boolean>(false);
+  const { state } = useShoppingCartContext();
 
-  //Cart Drawer utils
-  const toggleDrawer =
-    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-      if (
-        event.type === "keydown" &&
-        ((event as React.KeyboardEvent).key === "Tab" ||
-          (event as React.KeyboardEvent).key === "Shift")
-      ) {
-        return;
-      }
+  console.log(`state cart`, state);
 
-      setOpen(open);
-    };
+  const handleSearch = () => {
+    console.log("boton search");
+    console.log(`state cart`, state);
+  };
 
   return (
     <Box
@@ -40,7 +32,7 @@ const Navbar: React.FC = () => {
         boxShadow: "3px 3px 3px 2px rgba(0, 0, 0, 0.05)",
         position: "fixed",
         width: "100%",
-        zIndex: 2,
+        zIndex: 1201,
       }}
     >
       <Container maxWidth="xl">
@@ -110,6 +102,7 @@ const Navbar: React.FC = () => {
                 py: 1.7,
                 margin: "-1px",
               }}
+              onClick={handleSearch}
             >
               {/* Search */}
               <Typography variant="caption" sx={{ fontWeight: 600 }}>
@@ -124,15 +117,7 @@ const Navbar: React.FC = () => {
             sx={{ display: { xs: "none", md: "flex" } }}
           >
             <LoginModal />
-            <IconButton
-              sx={{ backgroundColor: "rgba(0, 0, 0, 0.04)" }}
-              onClick={toggleDrawer(true)}
-            >
-              <ShoppingBagOutlinedIcon />
-            </IconButton>
-            <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
-              <Box width={"400px"}></Box>
-            </Drawer>
+            <ShoppingCart />
           </Stack>
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
             <MobileMenu />

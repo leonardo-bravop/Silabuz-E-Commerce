@@ -4,6 +4,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import LoginModal from "./LoginModal";
+import ShoppingCart from "components/ShoppingCart";
 
 const MobileMenu = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -51,6 +52,9 @@ const MobileMenu = () => {
       >
         <MenuItem onClick={handleCloseNavMenu}>
           <LoginModal />
+        </MenuItem>
+        <MenuItem onClick={handleCloseNavMenu}>
+          <ShoppingCart />
         </MenuItem>
       </Menu>
     </>
