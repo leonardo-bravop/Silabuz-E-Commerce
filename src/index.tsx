@@ -8,22 +8,25 @@ import theme from "./theme";
 import Layout from "./components/Layout";
 import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
+import { ShoppingCartProvider } from "contexts/ShoppingCartContext";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <Layout>
-            <App />
-          </Layout>
-        </ThemeProvider>
+        <ShoppingCartProvider>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <Layout>
+              <App />
+            </Layout>
+          </ThemeProvider>
+        </ShoppingCartProvider>
       </AuthProvider>
     </BrowserRouter>
-  </React.StrictMode>
+  // </React.StrictMode>
 );
