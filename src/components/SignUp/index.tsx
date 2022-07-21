@@ -33,13 +33,11 @@ const SignUp = () => {
     try {
       setError("");
       setLoading(true);
-      console.log(`PROBANDO NO ERRANDO`);
       await signup(user.email, user.password);
       navigate("/");
     } catch (err) {
       console.log(err);
       setError("Failed to create an account");
-      console.log(`UN ERROR`);
     }
     setLoading(false);
   };
