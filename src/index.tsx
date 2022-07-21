@@ -9,6 +9,7 @@ import Layout from "./components/Layout";
 import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
 import { ShoppingCartProvider } from "contexts/ShoppingCartContext";
+import '@algolia/autocomplete-theme-classic';
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

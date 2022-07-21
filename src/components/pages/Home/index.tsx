@@ -36,7 +36,7 @@ const Home = () => {
         }}
       >
         <Typography variant="h3" sx={{ fontWeight: 600 }}>
-          You want it, we got it
+          More than just products
         </Typography>
       </Box>
       <Box pt={{ xs: "500px", md: "600px" }} sx={{ display: { md: "flex" } }}>
