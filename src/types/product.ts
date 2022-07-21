@@ -1,5 +1,8 @@
+import { BaseItem } from '@algolia/autocomplete-core';
+import { Hit } from '@algolia/client-search';
+
 export interface Product {
-    id: number
+    id: number 
     title: string
     price: number
     description: string
@@ -10,3 +13,7 @@ export interface Product {
         count: number
     }
 }
+
+type ProductItem = BaseItem & Product;
+
+export type AutocompleteItem = Hit<ProductItem>
