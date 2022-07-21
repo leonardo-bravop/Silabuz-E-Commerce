@@ -3,7 +3,6 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   onAuthStateChanged,
-  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -13,11 +12,11 @@ import {
 import { auth } from "../firebase";
 
 type ContextProps = {
-  currentUser: User | null
+  currentUser: User | null;
   signup: (email: string, password: string) => Promise<UserCredential>;
-  login: (email: string, password: string) => Promise<UserCredential>
+  login: (email: string, password: string) => Promise<UserCredential>;
   loginWithGoogle: () => Promise<UserCredential>;
-  logout: () => Promise<void>
+  logout: () => Promise<void>;
 };
 
 const AuthContext = React.createContext<ContextProps | null>(null);
@@ -51,16 +50,10 @@ export function AuthProvider({ children }: props) {
 
   const logout = () => signOut(auth);
 
-  // const resetPassword = async (email: string) =>
-  //   sendPasswordResetEmail(auth, email);
-
   useEffect(() => {
     const unsubuscribe = onAuthStateChanged(auth, (user) => {
-      // console.log({ currentUser });
-      // if (currentUser) {
-        setCurrentUser(user);
-        setLoading(false)
-      // }
+      setCurrentUser(user);
+      setLoading(false);
       setLoading(false);
     });
     return () => unsubuscribe();
@@ -71,17 +64,11 @@ export function AuthProvider({ children }: props) {
     login,
     signup,
     logout,
-    loginWithGoogle
-    // resetPassword,
-    // updateEmail,
-    // updatePassword
-  }
-
+    loginWithGoogle,
+  };
 
   return (
-    <AuthContext.Provider
-      value={value}
-    >
+    <AuthContext.Provider value={value}>
       {!loading && children}
     </AuthContext.Provider>
   );
