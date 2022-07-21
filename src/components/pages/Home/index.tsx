@@ -27,7 +27,7 @@ const Home = () => {
           justifyContent: "center",
           backgroundColor: "#F6F9FC",
           position: "absolute",
-          width: "100vw",
+          width: "100%",
           left: 0,
           top: 0,
           height: { xs: "500px", md: "600px" },
@@ -37,7 +37,7 @@ const Home = () => {
           textAlign: "center",
         }}
       >
-        <Typography variant="h3" sx={{ fontWeight: 600 }}>
+        <Typography variant="h3" sx={{ fontWeight: 600, flexGrow: 1 }}>
           More than just products
         </Typography>
       </Box>
