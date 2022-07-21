@@ -114,7 +114,7 @@ function Autocomplete(
                       {items.map((item) => {
                         return (
                           <li
-                            key={item.objectID}
+                            key={item.title}
                             className="aa-Item"
                             {...autocomplete.getItemProps({ item, source })}
                           >
