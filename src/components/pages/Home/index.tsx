@@ -2,9 +2,11 @@ import { Box, Divider, Stack, Typography } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ProductsGrid from "../../Grid";
+import Categories from "./Categories";
 
 const Home = () => {
   const [categories, setCategories] = useState<string[]>([]);
+  const [url, setUrl] = useState<string>("https://fakestoreapi.com/products");
 
   useEffect(() => {
     axios
@@ -44,29 +46,33 @@ const Home = () => {
           <Stack sx={{ position: "sticky" }}>
             <Box mt={1} mb={3}>
               <Typography sx={{ fontWeight: 600, color: "secondary.main" }}>
-                Top Categories
+                Categories
               </Typography>
               <Divider variant="fullWidth" sx={{ fontWeight: 500 }} />
             </Box>
-            {categories.map((category, index) => (
-              <Box my={1} key={index}>
-                <Typography
-                  sx={{
-                    fontWeight: 600,
-                    color: "secondary.light",
-                    cursor: "pointer",
-                    "&:hover": {
-                      color: "primary.main",
-                    },
-                  }}
-                >
-                  {category[0].toUpperCase() + category.slice(1)}
-                </Typography>
-              </Box>
-            ))}
+            <Box
+              my={1}
+              onClick={() => {
+                setUrl("https://fakestoreapi.com/products");
+              }}
+            >
+              <Typography
+                sx={{
+                  fontWeight: 600,
+                  color: "secondary.light",
+                  cursor: "pointer",
+                  "&:hover": {
+                    color: "primary.main",
+                  },
+                }}
+              >
+                All
+              </Typography>
+            </Box>
+            <Categories categories={categories} setUrl={setUrl}/>
           </Stack>
         </Box>
-        <ProductsGrid />
+        <ProductsGrid url={url} />
       </Box>
     </>
   );

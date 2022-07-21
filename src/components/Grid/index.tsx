@@ -1,20 +1,28 @@
-import { Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import useSWR from "swr";
 import ProductCard from "../Card";
 import Spinner from "../Spinner";
 import { productsFetcher } from "../../utils/fetchers/productsFetcher";
 
-const ProductsGrid = () => {
- 
+interface props {
+  url: string;
+}
+
+const ProductsGrid = ({ url }: props) => {
   const {
     data: products,
     error,
     isValidating,
-  } = useSWR("https://fakestoreapi.com/products", productsFetcher, {
+  } = useSWR(url, productsFetcher, {
     refreshInterval: 0,
   });
 
-  if (isValidating) return <Spinner />;
+  if (isValidating)
+    return (
+      <Box height={'800px'} width='100%' display='flex' justifyContent='center'>
+        <Spinner />
+      </Box>
+    );
 
   if (!products || error) return <div>Error</div>;
 
